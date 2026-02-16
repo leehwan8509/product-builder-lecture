@@ -1,77 +1,76 @@
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --border-color: #ccc;
+    --button-bg: #007bff;
+    --button-color: #fff;
+}
+
+body.dark-mode {
+    --bg-color: #2c2c2c;
+    --text-color: #f0f0f0;
+    --border-color: #555;
+    --button-bg: #444;
+    --button-color: #f0f0f0;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5;
+    font-family: sans-serif;
     display: flex;
+    flex-direction: column; /* Changed to column to allow button to be placed above */
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle {
+    margin-bottom: 20px; /* Space between toggle and container */
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-h1 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.lotto-numbers {
+.numbers {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .number {
     width: 50px;
     height: 50px;
+    border: 1px solid var(--border-color);
     border-radius: 50%;
-    background-color: #4CAF50;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 5px;
+    transition: border-color 0.3s;
 }
 
-#generate-btn {
-    background-color: #008CBA;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
+button {
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#generate-btn:hover {
-    background-color: #005f7a;
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    border: none; /* Use border: none as button style is already defined for theme-toggle */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .history {
-    margin-top: 30px;
-}
-
-#history-list {
-    list-style: none;
-    padding: 0;
-    max-height: 150px;
-    overflow-y: auto;
-}
-
-#history-list li {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    font-size: 16px;
+    margin-top: 20px;
 }
