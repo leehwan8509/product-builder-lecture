@@ -1,8 +1,10 @@
 const generateBtn = document.getElementById('generate-btn');
-const numberElements = document.querySelectorAll('.number');
+const menuElement = document.querySelector('.menu');
 const historyList = document.getElementById('history-list');
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
+
+const dinnerMenus = ["Pizza", "Hamburger", "Sushi", "Pasta", "Chicken", "Salad", "Steak", "Taco", "Ramen", "Curry"];
 
 // Load saved theme preference
 const currentTheme = localStorage.getItem('theme');
@@ -19,25 +21,19 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-console.log('Script loaded'); // 스크립트가 로드되었는지 확인
+console.log('Script loaded');
 
 generateBtn.addEventListener('click', () => {
-    console.log('Generate button clicked'); // 버튼 클릭 확인
+    console.log('Generate button clicked');
 
-    const numbers = new Set();
-    while (numbers.size < 6) {
-        numbers.add(Math.floor(Math.random() * 45) + 1);
-    }
+    const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
+    const recommendedMenu = dinnerMenus[randomIndex];
 
-    const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+    console.log('Recommended menu:', recommendedMenu);
 
-    console.log('Generated numbers:', sortedNumbers); // 생성된 숫자 확인
-
-    numberElements.forEach((element, index) => {
-        element.textContent = sortedNumbers[index];
-    });
+    menuElement.textContent = recommendedMenu;
 
     const historyItem = document.createElement('li');
-    historyItem.textContent = sortedNumbers.join(', ');
+    historyItem.textContent = recommendedMenu;
     historyList.prepend(historyItem);
 });
